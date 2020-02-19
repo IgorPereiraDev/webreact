@@ -35,7 +35,7 @@ const ListaSeries = (props) => {
 								<button
 									className="btn btn-outline-warning btn-sm p-1"
 									onClick={() => {
-										PubSub.publish('editing', serie)
+										PubSub.publish('editing',serie)
 									}}
 								>
 									Editar
