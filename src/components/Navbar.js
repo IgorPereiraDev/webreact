@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import { signOut, signIn } from '../services/auth-service'
+import { signOut } from '../services/auth-service'
 
 export default class Navbar extends Component {
 
@@ -34,11 +34,14 @@ export default class Navbar extends Component {
 							<Link className="nav-link" to="/autores">Autores</Link>
 						</li>
 					</ul>
-						<button className="btn btn-outline-danger my-2 my-sm-0" type="submit" 
+					<button
+						className="btn btn-outline-danger my-2 my-sm-0"
 						onClick={() => {
 							signOut()
 							this.setState({signOut: true})
-						}}>Sair
+						}}
+						type="submit">
+						Sair
 						</button>
 				</div>
 			</nav>

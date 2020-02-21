@@ -13,25 +13,27 @@ import Navbar from '../components/Navbar'
 import { isSignedIn } from '../services/auth-service'
 
 const NotFound = () => {
-  return(
-    <div>
-      <h1>Página não encontrada</h1>
-    </div>
-  )
+	return (
+		<div>
+			<h1>Página não encontrada</h1>
+		</div>
+	)
 }
 
-const PrivateRoutes = ({component: Component, ...rest}) => {
+const PrivateRoutes = ({ component: Component, ...rest }) => {
 	return (
 		<Route {...rest}
-			render={props => 
+			render={props =>
 				isSignedIn() ? (
 					<div>
-						<Navbar/>
-						<Component {...props	}/>
+						<Navbar />
+						<Component {...props} />
 					</div>
 				) : (
-					<Redirect to={{ pathname: '/login', 
-							state: { from: props.location } }}/>
+						<Redirect to={{
+							pathname: '/login',
+							state: { from: props.location }
+						}} />
 				)
 			}
 		/>
@@ -45,7 +47,7 @@ const Routes = () => (
 			<PrivateRoutes path='/series' component={BoxSeries} />
 			<PrivateRoutes path='/autores' component={Autores} />
 			<PrivateRoutes exact path='/' component={Home} />
-			<PrivateRoutes component={NotFound} />
+			<Route component={NotFound} />
 		</Switch>
 	</Router>
 )
